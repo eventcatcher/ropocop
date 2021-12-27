@@ -1,0 +1,26 @@
+                             Legende zu Bohrdaten
+                             ====================
+
+
+CAD-System:      Platon
+Platine:         ROPOCOP2.PLT
+Datum:           23.06.1997
+
+Koordinaten:     absolut
+Code:            ASCII
+Ma~einheit:      1/25400 Zoll
+FÅhrende Nullen: nein
+Folgende Nullen: nein
+
+
+Werkzeug-Nr.  Durchmesser  Anzahl Bohrungen
+--------------------------------------------------------------------------
+
+   T1          0.60          194                                          
+   T2          0.80           58                                          
+   T3          0.71          120                                          
+   T4          1.30            6                                          
+
+
+--------------------------------------------------------------------------
+

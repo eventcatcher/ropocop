@@ -1,0 +1,62 @@
+;PALASM Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    -Milan-Romport
+PATTERN  A
+REVISION 1.0
+AUTHOR   Stephan Wilhelm
+COMPANY  dito
+DATE     06/12/97
+
+CHIP  _miropo  PALCE16V8
+
+;
+; EndgÅltige PCB-Version (laeuft mit Dongle von Cubase,Logic,CD-Rec,Zero-X)
+;
+; Die ROPOCOP-Platine mu· fuer den Milan geaendert werden:
+; 1N4148 Diode zwischen GAL-Pin19 (Kathode) zu ISA-D1=/MEMCS16 (Anode)
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1          clk                                              ;
+PIN  2          a20                                              ;
+PIN  3          a21                                              ;
+PIN  4          a22                                              ;
+PIN  5          a23                                              ;
+PIN  6          a16                                              ;
+PIN  7          a17                                              ;
+PIN  8          a18                                              ;
+PIN  9          a19                                              ;
+PIN  11         OE                                               ;
+PIN  12         MEMRD                                            ;
+PIN  13         ROM3a                                 COMBINATORIAL ;
+PIN  14         ROM4a                                 COMBINATORIAL ;
+PIN  15         ROM3b                                 COMBINATORIAL ;
+PIN  16         ROM4b                                 COMBINATORIAL ;
+PIN  17         ROM3c                                 COMBINATORIAL ;
+PIN  18         ROM4c                                 COMBINATORIAL ;
+PIN  19         DATA                                  COMBINATORIAL ;
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+; 4002 0000 - 4007 0000 per MMU nach FA 0000 - FB FFFF
+
+/ROM4a = /a23 * /a22 * /a21 * /a20 * /a19 * /a18 *  a17 * /a16;
+/ROM3a = /a23 * /a22 * /a21 * /a20 * /a19 * /a18 *  a17 *  a16;
+/ROM4b = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 * /a17 * /a16;
+/ROM3b = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 * /a17 *  a16;
+/ROM4c = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 *  a17 * /a16;
+/ROM3c = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 *  a17 *  a16;
+/DATA = /MEMRD * /a23 * /a22 * /a21 * /a20 * /a19
+      + /DATA * /ROM4a
+      + /DATA * /ROM3a
+      + /DATA * /ROM4b
+      + /DATA * /ROM3b
+      + /DATA * /ROM4c
+      + /DATA * /ROM3c;
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+;-------------------------------------------------------------------
+

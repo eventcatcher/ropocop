@@ -1,0 +1,13 @@
+
+Platine fr ISA-PC-AT-Slot
+
+2 Lagen, elektrische Prfung
+FR4,1.5mm stark, 35u Cu, L”tstoppmaske beidseitig, durchkontaktiert, rechteckig,
+Leiterbahnst„rke 0.3mm, Abstand Leiterbahn-Leiterbahn 0.3mm,
+3 Aussparungen am Platinenrand fr PC-Slot
+378 Bohrungen mit 4 verschiedenen Bohrdurchmessern von 0.6-1.3mm,
+Die Platine hat die Gr”e 152x80 mm.
+Die CAD-Platinendaten sind im Gerber-Format
+Die Bohrdaten sind im Sieb&Meyer SM1000-Format
+Die Aperture-Tabelle bleibt die gleiche wie bei der STARTRACK-Platine.
+

@@ -1,0 +1,55 @@
+;PALASM Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    -Hades-Romport
+PATTERN  A
+REVISION 1.0
+AUTHOR   Stephan Wilhelm
+COMPANY  dito
+DATE     06/12/97
+
+CHIP  _miropo  PALCE16V8
+
+;
+; Superfast-Testversion (laeuft nicht mit Dongle von Logic Audio !)
+;
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1          clk                                              ;
+PIN  2          a20                                              ;
+PIN  3          a21                                              ;
+PIN  4          a22                                              ;
+PIN  5          a23                                              ;
+PIN  6          a16                                              ;
+PIN  7          a17                                              ;
+PIN  8          a18                                              ;
+PIN  9          a19                                              ;
+PIN  11         OE                                               ;
+PIN  12         MEMRD                                            ;
+PIN  13         ROM3a                                 COMBINATORIAL ;
+PIN  14         ROM4a                                 COMBINATORIAL ;
+PIN  15         ROM3b                                 COMBINATORIAL ;
+PIN  16         ROM4b                                 COMBINATORIAL ;
+PIN  17         ROM3c                                 COMBINATORIAL ;
+PIN  18         ROM4c                                 COMBINATORIAL ;
+PIN  19         DATA                                  COMBINATORIAL ;
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+; 4002 0000 - 4007 0000 per MMU nach FA 0000 - FB FFFF
+
+/ROM4a = /a23 * /a22 * /a21 * /a20 * /a19 * /a18 *  a17 * /a16;
+/ROM3a = /a23 * /a22 * /a21 * /a20 * /a19 * /a18 *  a17 *  a16;
+/ROM4b = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 * /a17 * /a16;
+/ROM3b = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 * /a17 *  a16;
+/ROM4c = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 *  a17 * /a16;
+/ROM3c = /a23 * /a22 * /a21 * /a20 * /a19 *  a18 *  a17 *  a16;
+/DATA = /a23 * /a22 * /a21 * /a20 * /a19 * a17
+      + /a23 * /a22 * /a21 * /a20 * /a19 * a18;
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+;-------------------------------------------------------------------
+

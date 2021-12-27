@@ -1,0 +1,51 @@
+;PALASM Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    -Hades-Romport
+PATTERN  A
+REVISION 1.0
+AUTHOR   Stephan Wilhelm
+COMPANY  dito
+DATE     06/12/97
+
+CHIP  _haropo  PALCE16V8
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1          clk                                              ;
+PIN  2          MEMRD                                            ;
+PIN  3          a16                                              ;
+PIN  4          a17                                              ;
+PIN  5          a18                                              ;
+PIN  6          a19                                              ;
+PIN  7          a20                                              ;
+PIN  8          a21                                              ;
+PIN  9          a22                                              ;
+PIN  12         a23                                              ;
+PIN  11         OE                                               ;
+PIN  13         ROM4a                                 COMBINATORIAL ;
+PIN  14         ROM3a                                 COMBINATORIAL ;
+PIN  15         ROM4b                                 COMBINATORIAL ;
+PIN  16         ROM3b                                 COMBINATORIAL ;
+PIN  17         ROM4c                                 COMBINATORIAL ;
+PIN  18         ROM3c                                 COMBINATORIAL ;
+PIN  19         DATA                                  COMBINATORIAL ;
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+/ROM4a = /MEMRD * /a23 * a22 * a21 * a20 * a19 * /a18 *  a17 * /a16
+       + /ROM4a * /MEMRD;
+/ROM3a = /MEMRD * /a23 * a22 * a21 * a20 * a19 * /a18 *  a17 *  a16
+       + /ROM3a * /MEMRD;
+/ROM4b = /MEMRD * /a23 * a22 * a21 * a20 * a19 *  a18 * /a17 * /a16;  'ff7c 0000'
+/ROM3b = /MEMRD * /a23 * a22 * a21 * a20 * a19 *  a18 * /a17 *  a16;  'ff7d 0000'
+/ROM4c = /MEMRD * /a23 * a22 * a21 * a20 * a19 *  a18 *  a17 * /a16;  'ff7e 0000'
+/ROM3c = /MEMRD * /a23 * a22 * a21 * a20 * a19 *  a18 *  a17 *  a16;  'ff7f 0000'
+/DATA = /MEMRD * /a23 * a22 * a21 * a20 * a19 * /a18 *  a17
+      + /MEMRD * /a23 * a22 * a21 * a20 * a19 * a18;
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+;-------------------------------------------------------------------
+
